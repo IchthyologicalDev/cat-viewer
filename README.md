@@ -1,59 +1,22 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+# Cat Viewer
+## Description
+Why browse for cat images elsewhere when you can use Cat Viewer?
 
-## Available Scripts
+## Assumptions
+1. Previous button should not be displayed when the user is on the first image. 
+1. Next button will always be active, but will either display the stored image if present, or fetch a new image if the user is already on the last image fetched.
+1. If there's an error hitting the api, the current cat will remain displayed. For future work, we would want to notify the user.
+1. The UI will indicate loading to the user when waiting for an api call to complete. While waiting for a response, the user will be unable to generate a new request, but would be able to navigate to previous or next cats if they were already loaded in the app.
+1. There will be a get random cat button which will fetch a new cat, and take the user to very end.
+1. Clicking previous after getting a random cat will take the user to the second to last cat fetched, rather than the second to last cat viewed (otherwise the user would be unable to navigate to certain images without additional features)
 
-In the project directory, you can run:
+## Getting Started
+1. In the project directory, run `npm install`
+1. `npm start`
+1. The app should load on localhost:3000
 
-### `npm start`
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
-
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
-
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## With more time
+1. Shoring up UI after speaking with a designer
+1. Organizing code for ease of maintenance and new feature developer
+1. Expanding test coverage
