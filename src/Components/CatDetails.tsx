@@ -12,7 +12,7 @@ export const CatDetails = ({cat}:{cat:any}) => {
         origin = breed.origin;
         description = breed.description;
     }
-    return <Flex>
+    return <Flex textAlign='left'>
         <div>
             <p>Url: {cat.url}</p>
             <Detail label='Breed' text={name} /> 
