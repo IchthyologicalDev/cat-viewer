@@ -1,33 +1,35 @@
-// import { screen } from '@testing-library/react'
-// import { render, unmountComponentAtNode } from 'react-dom';
-// import { CatDetails } from './CatDetails';
+import { screen } from '@testing-library/react'
+import { render, unmountComponentAtNode } from 'react-dom';
+import { CatContainer } from './CatContainer';
+import { request } from "../Utilities/http-service"
 
-// let container = null;
-// let CATS = [];
-// let CAT_WITHOUT_BREED = {
-//     url: 'some-fake-url',
-//     breeds: []
-// }
 
-// let CAT_WITH_BREED = {
-//     url: 'some-fake-url',
-//     breeds: [
-//         {
-//             name: 'Maine Coon',
-//             temperament: 'docile, catty',
-//             origin: 'Maine',
-//             description: 'The Maine Coon is one of the only tolerable cats'
-//         }
-//     ]
-// }
+let container = null;
+const mockCATS = [];
+for(let i = 0; i < 10; i++) {
+    mockCATS.push({url:`test-url:${i}`});
+}
 
-// beforeEach(() => {
-//     container = document.createElement('div');
-//     document.body.appendChild(container);
-// })
+beforeEach(() => {
+    jest.mock('../Utilities/http-service', () => ({
+        request: jest.fn(() => new Promise(mockCATS))
+    }))
+    container = document.createElement('div');
+    document.body.appendChild(container);
+})
 
-// afterEach(() => {
-//     unmountComponentAtNode(container);
-//     container.remove();
-//     container = null;
-// })
+afterEach(() => {
+    jest.resetAllMocks();
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+})
+
+describe('On initial load', () => {
+    
+    it('renders the first cat', () => {
+        render(<CatContainer />, container);
+
+        expect(await screen.findByText('Url: test-url:1')).toBeVisible();
+    })
+})
