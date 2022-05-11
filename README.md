@@ -19,4 +19,6 @@ Why browse for cat images elsewhere when you can use Cat Viewer?
 ## With more time
 1. Shoring up UI after speaking with a designer
 1. Organizing code for ease of maintenance and new feature developer
-1. Expanding test coverage
+1. Expanding test coverage & moving away from render due to deprecation warning
+1. Error handling
+1. CSS
