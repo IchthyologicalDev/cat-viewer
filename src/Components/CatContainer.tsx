@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Box, ButtonGroup, Center, Container, Divider, Flex, IconButton, Image, Spacer, VStack } from '@chakra-ui/react';
-import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import React, { useEffect, useState } from "react";
+import { ButtonGroup, Divider, Flex, IconButton, Spacer} from "@chakra-ui/react";
+import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 
 import { request } from "../Utilities/http-service"
-import { NEW_CATS } from '../Utilities/constants';
+import { NEW_CATS } from "../Utilities/constants";
 import { CatImage } from "./CatImage";
-import { CatDetails } from './CatDetails';
+import { CatDetails } from "./CatDetails";
 
 export const CatContainer = () => {
     const [cats, setCats] = useState<any[]>([]);
@@ -48,7 +48,7 @@ export const CatContainer = () => {
         if(currentCatIndex > maxIndex && currentCatIndex < cats.length) {
             setMaxIndex(currentCatIndex);
         }
-    }, [currentCatIndex, maxIndex])
+    }, [currentCatIndex, maxIndex, cats])
 
     useEffect(() => {
         if(currentCatIndex >= cats.length - 2) {
@@ -66,11 +66,21 @@ export const CatContainer = () => {
     const currentCat = cats[currentCatIndex];
 
     return (
-            <Flex maxW='80%' minW='80%' alignItems='center' wrap='wrap' rowGap={2}>
-                <Flex minWidth='100%' alignItems='center'>
+            <Flex 
+                maxWidth="80%"
+                minWidth="80%"
+                alignItems="center" 
+                wrap="wrap"
+                rowGap={2}
+                backgroundColor="#DCD8C6"
+                padding={4}
+                minHeight="100vh"
+                flexDirection="column"
+            >
+                <Flex minWidth="100%" alignItems="center">
                     <IconButton
                         aria-label="previous"
-                        disabled={currentCatIndex == 0}
+                        disabled={currentCatIndex === 0}
                         icon={<ChevronLeftIcon/>}
                         onClick={viewPreviousCat}
                     />
@@ -90,7 +100,7 @@ export const CatContainer = () => {
                         />
                     </ButtonGroup>
                 </Flex>
-                <Flex maxWidth='inherit' justify='center' minWidth='100%'>
+                <Flex maxWidth="inherit" justify="center" minWidth="100%" flexGrow={1}>
                     {cats.length && <CatImage
                         url={currentCat.url}
                     />}

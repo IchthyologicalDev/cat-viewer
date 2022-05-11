@@ -9,7 +9,7 @@ export const request = (url: string): Promise<any> => {
     return fetch(url)
     .then(response => {
         if(!response.ok) {
-            throw new Error('Cats are napping.')
+            throw new Error("Cats are napping.")
         }
         return response.json();
     })
